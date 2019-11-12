@@ -6,7 +6,7 @@
 void roteste_Y(int p_grade)//functie rotire pe axa Y
 {
 	glRotatef(p_grade, .0, 1, .0);
-	glutPostRedisplay();
+	glutPostRedisplay();//se reinitializeaza continutul ferestrei
 }
 void roteste_X(int p_grade)
 {
@@ -60,7 +60,7 @@ void display(void)
 	int l = 10;
 
 	for (double i = 0; i <= l; i++) {
-		glBegin(GL_LINE_LOOP);
+		glBegin(GL_LINE_LOOP); //se creeaza o linie inchisa
 		glColor3f(1 - i / 10, i / 20, 1);
 		glVertex3f(1 - i / l, 0, 0);
 		glVertex3f(0, 1 - i / l, 0);
