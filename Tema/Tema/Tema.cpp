@@ -1,7 +1,7 @@
 #include <iostream>
 #include <GL/Glut.h>
 
-int meniu_main;
+int meniu_main, submeniu1;
 
 void init()
 {
@@ -74,10 +74,14 @@ int main(int argc, char** argv)
 	glutCreateWindow("Exemplul 1");// functie creare fereastra
 	init();
 	//Meniuri
-	meniu_main = glutCreateMenu(meniu_principal);//creeaza meniul 
+	submeniu1 = glutCreateMenu(submenu1);
+	glutAddMenuEntry("Selectie", 0);
+	glutAddMenuEntry("Editare", 1);
+
+	meniu_main = glutCreateMenu(meniu_principal);//creeaza meniul
+	glutAddSubMenu("SubMeniu1", submeniu1);
+	glutAddSubMenu("Sphere", 1);
 	glutAddMenuEntry("Exit", 0);
-	glutAddMenuEntry("Sphere", 1);
-	glutAddMenuEntry("2", 2);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
 	//
