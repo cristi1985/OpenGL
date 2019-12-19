@@ -33,7 +33,7 @@ void display()
 void display2(int noVertex)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
-	glColor3f(0.0, 1.0, 0.0);
+	glColor3f(0.0,  , 0.0);
 	glBegin(GL_POLYGON); // initializare desen poligon
 	glVertex2f(0.0, 0.0);//stabilire coordonate triunghi
 	glVertex2f(200.0, 200.0);//stabilire coordonate triunghi
