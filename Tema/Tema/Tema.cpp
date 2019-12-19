@@ -1,7 +1,7 @@
 #include <iostream>
 #include <GL/Glut.h>
 
-int meniu_main, submeniu1;
+int meniu_main, submeniu3D, submeniu2D;
 
 void init()
 {
@@ -30,6 +30,29 @@ void display()
 
 }
 
+void display2(int noVertex)
+{
+	glClear(GL_COLOR_BUFFER_BIT);
+	glColor3f(0.0, 1.0, 0.0);
+	glBegin(GL_POLYGON); // initializare desen poligon
+	glVertex2f(0.0, 0.0);//stabilire coordonate triunghi
+	glVertex2f(200.0, 200.0);//stabilire coordonate triunghi
+	glVertex2f(0.0, 200.0);//stabilire coordonate triunghi
+	glEnd();//sfarsit Desenare
+
+	glFlush();//executare functie
+
+	glColor3f(1.0, 1.0, 0.0);
+	glBegin(GL_POINTS);
+	glVertex2i(0, 0);
+	glVertex2i(200, 200);
+	glVertex2i(380, 20);
+	glEnd();
+	glFlush();
+
+}
+
+
 void reshape(int w, int h) //functie redesenare
 {
 	glViewport(0, 0, (GLsizei)w, (GLsizei)h);//stabiliere viewport la dimensiunea ferestrei
@@ -49,7 +72,7 @@ void meniu_principal(int key)
 
 }
 
-void submenu1(int key)
+void submenu_3d(int key)
 {
 	switch (key)
 	{
@@ -60,6 +83,19 @@ void submenu1(int key)
 			printf("Editare\n");
 			break;
 
+	}
+}
+
+void submenu_2d(int key)
+{
+	switch (key)
+	{
+	case 0:
+		printf("Triunghi");
+		break;
+	case 1:
+		printf("Dreptunghi");
+		break;
 	}
 }
 
@@ -74,13 +110,17 @@ int main(int argc, char** argv)
 	glutCreateWindow("Exemplul 1");// functie creare fereastra
 	init();
 	//Meniuri
-	submeniu1 = glutCreateMenu(submenu1);
+	submeniu3D = glutCreateMenu(submenu_3d);
 	glutAddMenuEntry("Selectie", 0);
 	glutAddMenuEntry("Editare", 1);
 
+	submeniu2D = glutCreateMenu(submenu_2d);
+	glutAddMenuEntry("Triunghi", 0);
+	glutAddMenuEntry("Dreptunghi", 1);
+
 	meniu_main = glutCreateMenu(meniu_principal);//creeaza meniul
-	glutAddSubMenu("SubMeniu1", submeniu1);
-	glutAddSubMenu("Sphere", 1);
+	glutAddSubMenu("Obiecte 3D", submeniu3D);
+	glutAddSubMenu("Obiected 2D", submeniu2D);
 	glutAddMenuEntry("Exit", 0);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 
